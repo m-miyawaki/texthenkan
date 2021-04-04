@@ -1,0 +1,150 @@
+{
+  "name": "texthenkan",
+  "displayName": "textHenkan",
+  "description": "日本語テキストの様々な変換をします",
+  "publisher": "miyawaki",
+  "version": "0.0.3",
+  "repository": {"url": "https://github.com/m-miyawaki/texthenkan"},
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.46.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:texthenkan.toHankaku",
+    "onCommand:texthenkan.deleteKaigyo",
+    "onCommand:texthenkan.deleteKaigyoSpace",
+    "onCommand:texthenkan.commaToTouten",
+    "onCommand:texthenkan.toutenToComma",
+    "onCommand:texthenkan.doubleKakko",
+    "onCommand:texthenkan.toUpperCase",
+    "onCommand:texthenkan.toLowerCase"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "texthenkan.toHankaku",
+        "title": "toHankaku 半角に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.deleteKaigyo",
+        "title": "deleteKaigyo 改行削除",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+         "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.deleteKaigyoSpace",
+        "title": "deleteKaigyoSpace 改行・スペース削除",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.commaToTouten",
+        "title": "commaToTouten 「，」を「、」に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.toutenToComma",
+        "title": "toutenToComma 「、」を「，」に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.doubleKakko",
+        "title": "doubleKakko 「aa「bb」cc」→「aa『bb』cc」",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.toUpperCase",
+        "title": "toUpperCase 大文字に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.toLowerCase",
+        "title": "toLowerCase 小文字に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      }
+    ],
+    "menus": {
+        "editor/context": [
+        {
+          "command": "texthenkan.toHankaku",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@1"
+         
+        },
+        {
+          "command": "texthenkan.deleteKaigyo",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@2"
+         
+        },
+        {
+          "command": "texthenkan.deleteKaigyoSpace",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@3"
+         
+        },
+        {
+          "command": "texthenkan.commaToTouten",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@4"
+         
+        },
+        {
+          "command": "texthenkan.toutenToComma",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@5"
+         
+        },
+        {
+          "command": "texthenkan.doubleKakko",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@6"
+         
+        },
+        {
+          "command": "texthenkan.toUpperCase",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@7"
+         
+        },
+        {
+          "command": "texthenkan.toLowerCase",
+          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "group": "5_texthenkan@8"
+         
+        }
+      ]}
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.46.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  }
+}

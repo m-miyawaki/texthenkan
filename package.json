@@ -3,9 +3,12 @@
   "displayName": "textHenkan",
   "description": "日本語テキストの様々な変換をします",
   "publisher": "miyawaki",
-  "version": "0.0.3",
-  "repository": {"url": "https://github.com/m-miyawaki/texthenkan"},
-  "license": "MIT",
+  "version": "0.0.4",
+  "repository": {
+		"type": "git",
+    "url": "https://github.com/m-miyawaki/texthenkan"
+  },
+  "license": "MIT-0",
   "engines": {
     "vscode": "^1.46.0"
   },

@@ -1,9 +1,9 @@
 {
   "name": "texthenkan",
   "displayName": "textHenkan",
-  "description": "日本語テキストの様々な変換をします",
+  "description": "テキストの様々な変換をします",
   "publisher": "miyawaki",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "repository": {
 		"type": "git",
     "url": "https://github.com/m-miyawaki/texthenkan"
@@ -23,7 +23,9 @@
     "onCommand:texthenkan.toutenToComma",
     "onCommand:texthenkan.doubleKakko",
     "onCommand:texthenkan.toUpperCase",
-    "onCommand:texthenkan.toLowerCase"
+    "onCommand:texthenkan.toLowerCase",
+    "onCommand:texthenkan.warekiSeireki",
+    "onCommand:texthenkan.seirekiWareki"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -75,56 +77,135 @@
         "title": "toLowerCase 小文字に変換",
         "enablement": "editorLangId == plaintext || editorLangId == markdown",
         "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.warekiSeireki",
+        "title": "warekiSeireki 西暦に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
+      },
+      {
+        "command": "texthenkan.seirekiWareki",
+        "title": "seirekiWareki 和暦に変換",
+        "enablement": "editorLangId == plaintext || editorLangId == markdown",
+        "category": "textHenkan"
       }
     ],
+    "configuration":{
+      "title": "textHenkan",
+      "properties": {
+        "texthenkan.01_toHankaku.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "toHankaku（半角に変換）をコンテキストメニューに登録"
+        },
+        "texthenkan.02_deleteKaigyo.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "deleteKaigyo（改行削除）をコンテキストメニューに登録"
+        },
+        "texthenkan.03_deleteKaigyoSpace.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "deleteKaigyoSpace（改行・スペース削除）をコンテキストメニューに登録"
+        },
+        "texthenkan.04_commaToTouten.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "commaToTouten（「，」を「、」に変換）をコンテキストメニューに登録"
+        },
+        "texthenkan.05_toutenToComma.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "toutenToComma（「、」を「，」に変換）をコンテキストメニューに登録"
+        },
+        "texthenkan.06_doubleKakko.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "doubleKakko（「aa「bb」cc」→「aa『bb』cc」）をコンテキストメニューに登録"
+        },
+        "texthenkan.07_toUpperCase.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "toUpperCase（大文字に変換）をコンテキストメニューに登録"
+        },
+        "texthenkan.08_toLowerCase.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "toLowerCase（小文字に変換）をコンテキストメニューに登録"
+        },
+        "texthenkan.09_warekiSeireki.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "warekiSeireki（西暦に変換）をコンテキストメニューに登録"
+        },
+        "texthenkan.10_seirekiWareki.showInEditorContextMenu":{
+          "type":"boolean",
+          "default":"false",
+          "description": "seirekiWarekii（和暦に変換）をコンテキストメニューに登録"
+        }
+      }
+    },
     "menus": {
         "editor/context": [
         {
           "command": "texthenkan.toHankaku",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.01_toHankaku.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.01_toHankaku.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@1"
          
         },
         {
           "command": "texthenkan.deleteKaigyo",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.02_deleteKaigyo.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.02_deleteKaigyo.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@2"
          
         },
         {
           "command": "texthenkan.deleteKaigyoSpace",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.03_deleteKaigyoSpace.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.03_deleteKaigyoSpace.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@3"
          
         },
         {
           "command": "texthenkan.commaToTouten",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.04_commaToTouten.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.04_commaToTouten.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@4"
          
         },
         {
           "command": "texthenkan.toutenToComma",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.05_toutenToComma.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.05_toutenToComma.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@5"
          
         },
         {
           "command": "texthenkan.doubleKakko",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.06_doubleKakko.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.06_doubleKakko.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@6"
          
         },
         {
           "command": "texthenkan.toUpperCase",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.07_toUpperCase.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.07_toUpperCase.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@7"
          
         },
         {
           "command": "texthenkan.toLowerCase",
-          "when": "editorLangId == plaintext || editorLangId == markdown",
+          "when": "config.texthenkan.08_toLowerCase.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.08_toLowerCase.showInEditorContextMenu && editorLangId == markdown",
           "group": "5_texthenkan@8"
+         
+        },
+        {
+          "command": "texthenkan.warekiSeireki",
+          "when": "config.texthenkan.09_warekiSeireki.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.09_warekiSeireki.showInEditorContextMenu && editorLangId == markdown",
+          "group": "5_texthenkan@9"
+         
+        },
+        {
+          "command": "texthenkan.seirekiWareki",
+          "when": "config.texthenkan.10_seirekiWareki.showInEditorContextMenu && editorLangId == plaintext || config.texthenkan.10_seirekiWareki.showInEditorContextMenu && editorLangId == markdown",
+          "group": "5_texthenkan@10"
          
         }
       ]}

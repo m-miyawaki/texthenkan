@@ -1,4 +1,4 @@
-# textHenkan
+# TextHenkan README
 （主に日本語の）テキストの様々な変換をします
 
 ## 機能

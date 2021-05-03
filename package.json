@@ -15,6 +15,14 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "半角に変換",
+    "改行の削除",
+    "読点",
+    "カンマ",
+    "西暦",
+    "和暦"
+],
   "activationEvents": [
     "onCommand:texthenkan.toHankaku",
     "onCommand:texthenkan.deleteKaigyo",

@@ -3,47 +3,30 @@
 
 ## 機能
 選択範囲のテキスト（選択されていない場合は全範囲のテキスト）に対して、次の変換をします。
-- `toHankaku`: 全角英数字・記号・スペースを半角に変換
-- `deleteKaigyo`: 改行の削除
-- `deleteKaigyoSpace`: 改行とスペースの削除
-- `commaToTouten`: 「，」を「、」に変換
-- `toutenToComma`: 「、」を「，」に変換
-- `doubleKakko`: カギカッコ（「」）でくくられた文字列内のカギカッコをすべて二重カギカッコ（『』）に変換（「aa「bb」cc」→「aa『bb』cc」）
-- `toUpperCase`: 半角アルファベットの小文字を大文字に変換
-- `toLowerCase`: 半角アルファベットの大文字を小文字に変換
-- `warekiSeireki`: 和暦を西暦に変換
-- `seirekiWareki`: 西暦を和暦に変換
 
-## 使い方
-コマンドパレットで上記のコマンドを呼び出して実行するか、コンテキストメニュー（Windowsの右クリックメニュー）から選択して実行します（下画像参照）。
+|コマンド|コマンドパレット上の表示|機能|
+|---|---|---|
+|`texthenkan.toHankaku`|textHenkan: toHankaku| 全角英数字・記号・スペースを半角に変換|
+|`texthenkan.deleteKaigyo`|textHenkan: deleteKaigyo| 改行の削除|
+|`texthenkan.deleteKaigyoSpace`|textHenkan: deleteKaigyoSpace| 改行とスペースの削除|
+|`texthenkan.commaToTouten`|textHenkan: commaToTouten| 「，」（コンマ）を「、」に変換|
+|`texthenkan.toutenToComma`|textHenkan: toutenToComma| 「、」を「，」（コンマ）に変換|
+|`texthenkan.doubleKakko`|textHenkan: doubleKakko| カギカッコ（「」）でくくられた文字列内のカギカッコをすべて二重カギカッコ（『』）に変換（「aa「bb」cc」→「aa『bb』cc」）（下画像参照）|
+|`texthenkan.toUpperCase`|textHenkan: toUpperCase| 半角アルファベットの小文字を大文字に変換|
+|`texthenkan.toLowerCase`|textHenkan: toLowerCase| 半角アルファベットの大文字を小文字に変換|
+|`texthenkan.warekiSeireki`|textHenkan: warekiSeireki| 和暦を西暦に変換|
+|`texthenkan.seirekiWareki`|textHenkan: seirekiWareki| 西暦を和暦に変換|
 
-キーボードショートカットで実行したい場合は、下記のコマンドを適当なキーに割り当ててください。
-
-- toHankaku
-	- `texthenkan.toHankaku`
-- deleteKaigyo
-	- `texthenkan.deleteKaigyo`
-- deleteKaigyoSpace
-	- `texthenkan.deleteKaigyoSpace`
-- commaToTouten
-	- `texthenkan.commaToTouten`
-- toutenToComma
-	- `texthenkan.toutenToComma`
-- doubleKakko
-	- `texthenkan.doubleKakko`
-- toUpperCase
-	- `texthenkan.toUpperCase`
-- toLowerCase
-	- `texthenkan.toLowerCase`
-- warekiSeireki
-	- `texthenkan.warekiSeireki`
-- seirekiWareki
-	- `texthenkan.seirekiWareki`
 
 ![](./gif/doublekakko.gif)
 
-## Release Notes
 
-### 1.0.0
+## 使い方
+コマンドパレットで上記のコマンドを呼び出して実行します。
 
-公開
+キーボードショートカットで実行したい場合は、下記のコマンドを適当なキーに割り当ててください。
+
+上の画像のように、コンテキストメニュー（Windowsの右クリックメニュー）から選択して実行することも可能です（要設定変更）。
+
+## Extension Settings
+Settingsの"Show In Editor Context Menu"のところでチェックを入れたコマンドは、コンテキストメニューに表示されるようになります。

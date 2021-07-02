@@ -6,11 +6,14 @@
   "version": "1.0.0",
   "repository": {
 		"type": "git",
-    "url": "https://github.com/m-miyawaki/texthenkan"
+    "url": "https://github.com/m-miyawaki/texthenkan.git"
   },
   "license": "MIT-0",
   "engines": {
     "vscode": "^1.46.0"
+  },
+  "bugs": {
+    "url": "https://github.com/m-miyawaki/texthenkan/issues"
   },
   "categories": [
     "Other"
@@ -55,12 +58,12 @@
       },
       {
         "command": "texthenkan.commaToTouten",
-        "title": "commaToTouten 「，」を「、」に変換",
+        "title": "commaToTouten 「，」（コンマ）を「、」に変換",
         "category": "textHenkan"
       },
       {
         "command": "texthenkan.toutenToComma",
-        "title": "toutenToComma 「、」を「，」に変換",
+        "title": "toutenToComma 「、」を「，」（コンマ）に変換",
         "category": "textHenkan"
       },
       {
@@ -94,52 +97,42 @@
       "properties": {
         "texthenkan.showInEditorContextMenu.01":{
           "type":"boolean",
-          "default":"false",
           "description": "toHankaku（半角に変換）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.02":{
           "type":"boolean",
-          "default":"false",
           "description": "deleteKaigyo（改行削除）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.03":{
           "type":"boolean",
-          "default":"false",
           "description": "deleteKaigyoSpace（改行・スペース削除）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.04":{
           "type":"boolean",
-          "default":"false",
-          "description": "commaToTouten（「，」を「、」に変換）をコンテキストメニューに登録"
+          "description": "commaToTouten（「，」（コンマ）を「、」に変換）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.05":{
           "type":"boolean",
-          "default":"false",
-          "description": "toutenToComma（「、」を「，」に変換）をコンテキストメニューに登録"
+          "description": "toutenToComma（「、」を「，」（コンマ）に変換）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.06":{
           "type":"boolean",
-          "default":"false",
           "description": "doubleKakko（「aa「bb」cc」→「aa『bb』cc」）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.07":{
           "type":"boolean",
-          "default":"false",
           "description": "toUpperCase（大文字に変換）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.08":{
           "type":"boolean",
-          "default":"false",
           "description": "toLowerCase（小文字に変換）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.09":{
           "type":"boolean",
-          "default":"false",
           "description": "warekiSeireki（西暦に変換）をコンテキストメニューに登録"
         },
         "texthenkan.showInEditorContextMenu.10":{
           "type":"boolean",
-          "default":"false",
           "description": "seirekiWarekii（和暦に変換）をコンテキストメニューに登録"
         }
       }

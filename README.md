@@ -1,7 +1,9 @@
 # TextHenkan README
+
 （主に日本語の）テキストの様々な変換をします
 
 ## 機能
+
 選択範囲のテキスト（選択されていない場合は全範囲のテキスト）に対して、次の変換をします。
 
 |コマンド|コマンドパレット上の表示|機能|
@@ -16,12 +18,12 @@
 |`texthenkan.toLowerCase`|textHenkan: toLowerCase| 半角アルファベットの大文字を小文字に変換|
 |`texthenkan.warekiSeireki`|textHenkan: warekiSeireki| 和暦を西暦に変換|
 |`texthenkan.seirekiWareki`|textHenkan: seirekiWareki| 西暦を和暦に変換|
-
+|`texthenkan.insertLineBreakSpaces`|textHenkan: insertLineBreakSpaces| 改行スペースを一括追加（Markdown）|
 
 ![](./gif/doublekakko.gif)
 
-
 ## 使い方
+
 コマンドパレットで上記のコマンドを呼び出して実行します。
 
 キーボードショートカットで実行したい場合は、上記のコマンドを適当なキーに割り当ててください。
@@ -29,4 +31,5 @@
 上の画像のように、コンテキストメニュー（Windowsの右クリックメニュー）から選択して実行することも可能です（要設定変更）。
 
 ## Extension Settings
+
 Settingsの"Show In Editor Context Menu"のところでチェックを入れたコマンドは、コンテキストメニューに表示されるようになります。

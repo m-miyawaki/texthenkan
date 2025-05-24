@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
 	//kakouのオプション	1: toHankaku; 2: deleteKaigyo; 3: deleteKaigyoSpace;
 	//					4: commaToTouten; 5: toutenToComma; 6:doubleKakko;
 	//					7: toUpperCase; 8: toLowerCase; 9: warekiSeireki; 
-	//					10: seirekiWareki
+	//					10: seirekiWareki; 11: insertLineBreakSpaces
 	context.subscriptions.push(vscode.commands.registerCommand('texthenkan.toHankaku', () => {kakou(1);	}));
 
 	context.subscriptions.push(vscode.commands.registerCommand('texthenkan.deleteKaigyo', () => {kakou(2);}));
@@ -23,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('texthenkan.toLowerCase', () => {kakou(8);}));
 	context.subscriptions.push(vscode.commands.registerCommand('texthenkan.warekiSeireki', () => {kakou(9);}));
 	context.subscriptions.push(vscode.commands.registerCommand('texthenkan.seirekiWareki', () => {kakou(10);}));
+	context.subscriptions.push(vscode.commands.registerCommand('texthenkan.insertLineBreakSpaces', () => {kakou(11);}));
 }
 
 
@@ -137,7 +138,40 @@ function kakou(option: number){
 				}
 				text = text.replace(seireki[0],string);
 			}
+		}
+		if (option === 11) {
+			if (document.languageId !== 'markdown') {
+				vscode.window.showInformationMessage('この変換は Markdown ファイルにのみ適用されます。');
+				return;
+			}
 
+			const lines = text.split('\n');
+			const updatedLines = lines.map((line, index) => {
+				const current = line;
+				const next = lines[index + 1] || '';
+
+				const isCurrentList = /^\s*[-+*]\s+/.test(current);             // リスト行
+				const isNextList = /^\s*[-+*]\s+/.test(next);                   // 次もリスト行
+				const isExcluded = /^\s*(?:[>#]|```|<)/.test(current);          // 引用・コード・HTMLなど
+				const isSlideDelimiter = /^\s*-{3,}\s*$/.test(current);         // ---（スライド区切り）
+				const endsWithSpace = /\s\s$/.test(current);                    // すでに "  " がある
+
+				if (isExcluded || isSlideDelimiter) return current;
+
+				if (isCurrentList && !isNextList && !endsWithSpace) {
+					// リストで、次がリストでない → 改行補完
+					return current + '  ';
+				}
+
+				if (!isCurrentList && !isExcluded && !isSlideDelimiter && !endsWithSpace && current.trim() !== '') {
+					// 通常行で改行補完
+					return current + '  ';
+				}
+
+				return current;
+			});
+
+			text = updatedLines.join('\n');
 		}
 		editor.edit(editBuilder => {
 			editBuilder.replace(selection, text);
